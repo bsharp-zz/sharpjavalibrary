@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<project name="SharpJavaLib"
+         default="main">
+	
+	<target name="main">
+
+		<tstamp>
+		  <format property="TODAY" pattern="yyyy-MM-dd" />
+		</tstamp>
+		
+		<!-- Source -->
+		<zip destfile="built/SharpJavaLib_${TODAY}_source.zip"
+         basedir="src"/>
+
+		<!-- Classes -->
+		<jar destfile="built/SharpJavaLib_${TODAY}.jar" basedir="bin"/>
+		
+		<!-- Both -->
+		<delete includeemptydirs="true">
+		    <fileset dir="built/classesAndSource" includes="**/*" excludes=".gitignore"/>
+		</delete>
+		
+		<copy todir="built/classesAndSource">
+			<fileset  dir="src"/>
+			<fileset  dir="bin"/>
+        </copy>
+		
+		<jar destfile="built/SharpJavaLib_${TODAY}_withSource.jar" basedir="built/classesAndSource"/>
+
+	</target>
+
+</project>

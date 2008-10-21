@@ -1,0 +1,7 @@
+.externalToolBuilders
+.settings
+bin
+.checkstyle
+.classpath
+.project
+SampleTextFile.txt
